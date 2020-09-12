@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
-import {AddShoppingCart} from '@styled-icons/material-outlined/AddShoppingCart'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
 
 import Button from '.'
 
@@ -45,8 +45,23 @@ describe('<Button />', () => {
   })
 
   it('should render a button with icon', () => {
-    renderWithTheme(<Button icon = {<AddShoppingCart data-testid= 'icon'/>}>Buy now</Button>)
+    renderWithTheme(
+      <Button icon={<AddShoppingCart data-testid="icon" />}>Buy now</Button>
+    )
     expect(screen.getByText(/Buy Now/i)).toBeInTheDocument()
     expect(screen.getByTestId('icon')).toBeInTheDocument()
+  })
+
+  it('Should render Button as a link', () => {
+    renderWithTheme(
+      <Button as="a" href="/link">
+        Buy Now
+      </Button>
+    )
+
+    expect(screen.getByRole('link', { name: /buy now/i })).toHaveAttribute(
+      'href',
+      '/link'
+    )
   })
 })
