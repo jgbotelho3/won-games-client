@@ -1,6 +1,6 @@
 import * as S from './styles'
 
-export type LineColors = 'primary' |'secondary'
+export type LineColors = 'primary' | 'secondary'
 
 export type HeadingProps = {
   children: React.ReactNode
@@ -24,7 +24,8 @@ const Heading = ({
     lineLeft={lineLeft}
     lineBottom={lineBottom}
     lineColor={lineColor}
-    size={size}>
+    size={size}
+  >
     {children}
   </S.Wrapper>
 )

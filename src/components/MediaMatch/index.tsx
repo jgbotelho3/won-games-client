@@ -18,11 +18,10 @@ const mediaMatchModifier = {
     ${media.greaterThan(size)`
       display: block;
     `}
-  `,
-
+  `
 }
 export default styled.div<MediaMatchProps>`
-  ${({lessThan, greaterThan}) => css`
+  ${({ lessThan, greaterThan }) => css`
     display: none;
 
     ${!!lessThan && mediaMatchModifier.lessThan(lessThan)}

@@ -1,12 +1,11 @@
-import styled, {css, DefaultTheme} from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 import { HeadingProps, LineColors } from '.'
 
-const wrapperModifiers  = {
-
+const wrapperModifiers = {
   small: (theme: DefaultTheme) => css`
     font-size: ${theme.font.sizes.medium};
 
-    &::after{
+    &::after {
       width: 3rem;
     }
   `,
@@ -30,13 +29,12 @@ const wrapperModifiers  = {
       bottom: -1rem;
       width: 5rem;
       border-bottom: 0.5rem solid ${theme.colors[lineColor]};
-
     }
   `
 }
 
 export const Wrapper = styled.h2<HeadingProps>`
-  ${({theme, color, lineLeft, lineBottom, lineColor, size}) => css`
+  ${({ theme, color, lineLeft, lineBottom, lineColor, size }) => css`
     font-size: ${theme.font.sizes.xlarge};
 
     color: ${theme.colors[color!]};
@@ -44,6 +42,5 @@ export const Wrapper = styled.h2<HeadingProps>`
     ${lineLeft && wrapperModifiers.lineLeft(theme, lineColor!)};
     ${lineBottom && wrapperModifiers.lineBottom(theme, lineColor!)};
     ${!!size && wrapperModifiers[size](theme)};
-
   `}
 `

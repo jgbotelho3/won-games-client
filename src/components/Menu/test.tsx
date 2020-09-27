@@ -8,7 +8,7 @@ describe('<Menu />', () => {
     renderWithTheme(<Menu />)
 
     expect(screen.getByLabelText(/open menu/i)).toBeInTheDocument()
-    expect(screen.getByRole('img', {name: /Won Games/i})).toBeInTheDocument()
+    expect(screen.getByRole('img', { name: /Won Games/i })).toBeInTheDocument()
     expect(screen.getByLabelText(/search/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/open shopping cart/i)).toBeInTheDocument()
   })
@@ -16,19 +16,18 @@ describe('<Menu />', () => {
   it('Should be handle the open/close mobile Menu', () => {
     renderWithTheme(<Menu />)
 
-
-    const fullMenuElement = screen.getByRole('navigation', { hidden: true})
+    const fullMenuElement = screen.getByRole('navigation', { hidden: true })
 
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
-    expect(fullMenuElement).toHaveStyle({opacity: 0})
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
 
     fireEvent.click(screen.getByLabelText(/open menu/i))
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('false')
-    expect(fullMenuElement).toHaveStyle({opacity: 1})
+    expect(fullMenuElement).toHaveStyle({ opacity: 1 })
 
     fireEvent.click(screen.getByLabelText(/close menu/i))
     expect(fullMenuElement.getAttribute('aria-hidden')).toBe('true')
-    expect(fullMenuElement).toHaveStyle({opacity: 0})
+    expect(fullMenuElement).toHaveStyle({ opacity: 0 })
   })
 
   it('Should show Register box when loged out', () => {
@@ -41,7 +40,7 @@ describe('<Menu />', () => {
   })
 
   it('Should show Wishlist and Account when logged in', () => {
-    renderWithTheme(<Menu username= "Jeff" />)
+    renderWithTheme(<Menu username="Jeff" />)
 
     expect(screen.getByText(/My account/i)).toBeInTheDocument()
     expect(screen.getByText(/Whishlist/i)).toBeInTheDocument()
