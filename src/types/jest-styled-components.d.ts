@@ -20,7 +20,7 @@ declare global {
       supports?: string
     }
 
-    interface Matchers<R, T> {
+    interface Matchers<R> {
       toHaveStyleRule(property: string, value?: Value, options?: Options): R
     }
   }
