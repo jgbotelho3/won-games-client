@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import {
   ShoppingCart as ShoppingCartIcon,
   Search as SearchIcon,
@@ -44,14 +45,19 @@ const Menu = ({ username }: MenuProps) => {
         <S.IconWrapper>
           <ShoppingCartIcon aria-label="open shopping cart" />
         </S.IconWrapper>
-        <MediaMatch greaterThan="medium">
-          {!username && <Button>Sign in</Button>}
-        </MediaMatch>
+        {!username && (
+          <MediaMatch greaterThan="medium">
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sign in</Button>
+            </Link>
+          </MediaMatch>
+        )}
       </S.MenuGroup>
 
       <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
         <CloseIcon aria-label="close menu" onClick={() => setIsOpen(false)} />
         <S.MenuNav>
+
           <S.MenuLink href="#">Home</S.MenuLink>
           <S.MenuLink href="#">Explore</S.MenuLink>
           {!!username && (
@@ -63,13 +69,17 @@ const Menu = ({ username }: MenuProps) => {
         </S.MenuNav>
         {!username && (
           <S.RegisterBox>
-            <Button fullWidth size="large">
-              Log in now
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button fullWidth size="large" as="a">
+                Sign In
+              </Button>
+            </Link>
             <span>or</span>
-            <S.CreateAccount href="#" title="Sign up">
-              Sign Up
-            </S.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <S.CreateAccount title="Sign up">
+                Sign Up
+              </S.CreateAccount>
+            </Link>
           </S.RegisterBox>
         )}
       </S.MenuFull>
